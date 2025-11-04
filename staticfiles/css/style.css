@@ -1,0 +1,108 @@
+/* 全体設定 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans JP", sans-serif;
+    background: linear-gradient(to bottom, #f9f5f0, #e8dfd3);
+    color: #96b9e6;
+    line-height: 1.6;
+}
+
+/* ヘッダー */
+header {
+    width: 100%;
+    background: linear-gradient(90deg, #c7a17a, #b18b5e);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* ロゴ部分 */
+header .logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* ナビゲーション */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff8e7;
+    font-weight: 600;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+}
+
+nav ul li a:hover {
+    color: #fff;
+    border-bottom: 2px solid #fff;
+}
+
+/* メイン */
+main {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ギャラリーセクション */
+.gallery {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.gallery h2 {
+    color: #5a3a1a;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #b18b5e;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.gallery img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* フッター */
+footer {
+    background: #b18b5e;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+}
