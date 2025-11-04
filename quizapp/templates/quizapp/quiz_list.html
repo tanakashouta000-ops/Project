@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}クイズ一覧{% endblock %}
+{% block content %}
+<h1>クイズ一覧</h1>
+<p><a href="{% url 'quizapp:quiz_create' %}">クイズを作成</a></p>
+<ul>
+    {% for q in quizzes %}
+    <li>
+        <a href="{% url 'quizapp:quiz_detail' q.pk %}">{{ q.question|truncatechars:60 }}</a>
+        <small>{{ q.created_at }}</small>
+    </li>
+    {% empty %}
+    <li>まだクイズがありません。</li>
+    {% endfor %}
+</ul>
+{% endblock %}

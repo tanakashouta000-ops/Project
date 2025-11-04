@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スタンプ投稿 | AIスタンプギャラリー</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'mainapp/css/stamp_create.css' %}">
+
+    <!-- JS -->
+    <script src="{% static 'mainapp/js/stamp_create.js' %}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>✨ AIスタンプ投稿フォーム ✨</h1>
+            <p>自分だけのオリジナルスタンプを登録してギャラリーに共有しよう！</p>
+        </header>
+
+        <form method="POST" enctype="multipart/form-data" class="stamp-form" id="stampForm">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">タイトル</label>
+                <input type="text" id="title" name="title" placeholder="例：ゆるかわトイプードル" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">説明</label>
+                <textarea id="description" name="description" placeholder="スタンプの特徴や使い方などを書こう"></textarea>
+            </div>
+
+            <div class="form-group image-upload">
+                <label for="image">画像をアップロード</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+                <div id="previewContainer" class="preview-container">
+                    <p>プレビューがここに表示されます</p>
+                    <img id="previewImage" alt="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="external_url">販売サイトURL（任意）</label>
+                <input type="url" id="external_url" name="external_url" placeholder="https://example.com">
+            </div>
+
+            <button type="submit" class="submit-btn">🌟 投稿する</button>
+        </form>
+
+        <footer class="footer">
+            <a href="{% url 'mainapp:stamp_list' %}" class="back-link">← スタンプ一覧に戻る</a>
+        </footer>
+    </div>
+</body>
+</html>

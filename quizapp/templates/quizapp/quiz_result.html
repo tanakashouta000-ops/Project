@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}回答結果{% endblock %}
+{% block content %}
+<h1>回答結果</h1>
+{% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% else %}
+    <p>あなたの選んだ選択肢：{{ selected.text }}</p>
+    {% if correct %}
+        <p style="color:green; font-weight:bold;">正解！おめでとう！</p>
+    {% else %}
+        <p style="color:red; font-weight:bold;">不正解。正しい答えは：</p>
+        <ul>
+            {% for c in quiz.choices.all %}
+                {% if c.is_correct %}<li>{{ c.text }}</li>{% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endif %}
+<p><a href="{% url 'quizapp:quiz_list' %}">クイズ一覧へ戻る</a></p>
+<p><a href="javascript:history.back()">戻る</a></p>
+{% endblock %}

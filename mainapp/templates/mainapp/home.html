@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}ホーム | 泉岡 Portfolio{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="animated-bg"></div>
+
+<section class="intro">
+  <h1>Welcome to 泉岡のサイト</h1>
+  <p>AI・写真・日記・スタンプなどを発信しています。</p>
+  <a href="{% url 'mainapp:diary_create' %}" class="btn">日記を書く</a>
+</section>
+
+<section class="gallery-section">
+  <h2>Gallery</h2>
+  <div class="gallery">
+    <img src="{% static 'mainapp/images/sample1.jpg' %}" alt="">
+    <img src="{% static 'mainapp/images/sample2.jpg' %}" alt="">
+    <img src="{% static 'mainapp/images/sample3.jpg' %}" alt="">
+    <img src="{% static 'mainapp/images/sample4.jpg' %}" alt="">
+  </div>
+</section>
+
+<section class="quiz-banner">
+  <h2>🧠 クイズで遊ぶ</h2>
+  <p>作って遊べるクイズを試してみよう。</p>
+  <a href="{% url 'quizapp:quiz_list' %}" class="btn">クイズへ</a>
+</section>
+
+<section class="profile">
+  {% if profile %}
+    {% if profile.avatar %}
+      <img src="{{ profile.avatar.url }}" alt="{{ profile.name }}" class="profile-img">
+    {% endif %}
+    <h3>{{ profile.name }}</h3>
+    <p>{{ profile.bio }}</p>
+  {% else %}
+    <p>プロフィールがありません。</p>
+  {% endif %}
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'mainapp/js/home.js' %}"></script>
+{% endblock %}

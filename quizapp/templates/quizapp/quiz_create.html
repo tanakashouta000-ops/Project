@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}クイズ作成{% endblock %}
+{% block content %}
+<h1>クイズを作成（4択）</h1>
+<form method="post">
+    {% csrf_token %}
+    <p><label>問題文：<br><textarea name="question" rows="4" required></textarea></label></p>
+    <p>選択肢（4つ必須）</p>
+    <p><input type="text" name="choice1" placeholder="選択肢1" required></p>
+    <p><input type="text" name="choice2" placeholder="選択肢2" required></p>
+    <p><input type="text" name="choice3" placeholder="選択肢3" required></p>
+    <p><input type="text" name="choice4" placeholder="選択肢4" required></p>
+    <p>正解の番号： 
+        <select name="correct">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </p>
+    <p><button type="submit">作成</button></p>
+</form>
+<p><a href="javascript:history.back()">戻る</a></p>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}クイズ{% endblock %}
+{% block content %}
+<h1>問題</h1>
+<p>{{ quiz.question|linebreaksbr }}</p>
+<form method="post">
+    {% csrf_token %}
+    {% for c in quiz.choices.all %}
+    <div>
+        <label><input type="radio" name="choice" value="{{ c.pk }}"> {{ c.text }}</label>
+    </div>
+    {% endfor %}
+    <p><button type="submit">回答する</button></p>
+</form>
+<p><a href="javascript:history.back()">戻る</a></p>
+{% endblock %}

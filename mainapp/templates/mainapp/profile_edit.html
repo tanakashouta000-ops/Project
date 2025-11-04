@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}プロフィール編集{% endblock %}
+{% block content %}
+<h1>プロフィール編集</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p><label>名前：<input type="text" name="name" value="{{ profile.name }}"></label></p>
+    <p><label>自己紹介：<br><textarea name="bio" rows="6">{{ profile.bio }}</textarea></label></p>
+    <p><label>アバター：<input type="file" name="avatar"></label></p>
+    <p><button type="submit">保存</button></p>
+</form>
+<p><a href="javascript:history.back()">戻る</a></p>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}日記作成{% endblock %}
+{% block content %}
+<h1>日記を作成</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p><label>タイトル：<input type="text" name="title" required></label></p>
+    <p><label>内容：<br><textarea name="content" rows="6" required></textarea></label></p>
+    <p><label>画像（任意）：<input type="file" name="image"></label></p>
+    <p><button type="submit">投稿する</button></p>
+</form>
+<p><a href="javascript:history.back()">戻る</a></p>
+{% endblock %}
